@@ -41,7 +41,7 @@ class Trainer:
             output = self.model(data)
 
             if model_type == 'cae':
-                loss = self.criterion(output, data)
+                loss = self.criterion(output, data.view(-1, data.size(1) * data.size(2)))
             else:
                 loss = self.criterion(output, target)
 
